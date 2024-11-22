@@ -64,6 +64,24 @@ mkdir -p "$BLEND_PROJECT_NAME/references/3d/blend"
 
 mkdir -p "$BLEND_PROJECT_NAME/docs/md"
 mkdir -p "$BLEND_PROJECT_NAME/docs/txt"
+
+#Blender
+#models/raw: .blend, .obj, .fbx, .stl
+#models/optimized: .blend, .obj, .fbx, .stl
+#models/parts: .obj, .fbx, .stl
+#textures/raw: .png, .jpg, .tiff, .bmp, .hdr
+#textures/processed: .png, .jpg, .tiff
+#textures/atlases: .png, .jpg
+#materials: .blend, .mtl, .json
+#scenes/test, final: .blend, .fbx, .obj
+#renders/tests, final: .png, .jpg, .exr
+#animations/actions, clips: .blend, .bvh, .abc
+#references/images: .jpg, .png
+#references/videos: .mp4, .avi, .mov
+#references/3d: .obj, .fbx, .blend
+#addons: .py, .json
+#cache/smoke, cloth, fluid: .vdb, .cache
+#docs: .md, .txt, .pdf
 mkdir -p "$BLEND_PROJECT_NAME/docs/pdf"
 
 echo "Structura de directoare a fost creată cu succes!"
