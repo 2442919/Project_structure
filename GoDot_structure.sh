@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Introduceți numele proiectului pentru Godot:"
+echo "Introduceți numele proiectului pentru GoDot:"
 read PROJECT_NAME
 
 # Creare directoare Blender
