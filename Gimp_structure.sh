@@ -35,3 +35,14 @@ mkdir -p "$GIMP_PROJECT_NAME/docs/txt"
 mkdir -p "$GIMP_PROJECT_NAME/docs/pdf"
 
 echo " Fisierele au fost create cu succes "
+
+#GIMP
+#sources/raw: .jpg, .png, .tiff, .psd, .xcf
+#sources/edited: .xcf, .psd
+#exports/png: .png
+#exports/jpg: .jpg
+#exports/web: .png, .jpg, .webp
+#brushes: .gbr, .vbr, .abr
+#patterns: .pat, .png
+#fonts: .ttf, .otf
+#docs: .md, .txt, .pdf
