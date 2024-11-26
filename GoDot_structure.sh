@@ -1,87 +1,48 @@
 #!/bin/bash
 
-echo "Introduceți numele proiectului pentru GoDot:"
-read PROJECT_NAME
+# Solicitarea numelui proiectului de la utilizator
+read -p "Introduceți numele proiectului Godot: " project_name
 
-# Creare directoare Blender
-mkdir -p "$BLEND_PROJECT_NAME/models/raw/blend"
-mkdir -p "$BLEND_PROJECT_NAME/models/raw/obj"
-mkdir -p "$BLEND_PROJECT_NAME/models/raw/fbx"
-mkdir -p "$BLEND_PROJECT_NAME/models/raw/stl"
+# Dacă utilizatorul nu introduce nimic, se folosește un nume implicit
+if [ -z "$project_name" ]; then
+    project_name="Proiect_Godot"
+fi
 
-mkdir -p "$BLEND_PROJECT_NAME/models/optimized/blend"
-mkdir -p "$BLEND_PROJECT_NAME/models/optimized/obj"
-mkdir -p "$BLEND_PROJECT_NAME/models/optimized/fbx"
-mkdir -p "$BLEND_PROJECT_NAME/models/optimized/stl"
+# Crearea directorului de bază pentru proiect
+base_path="$project_name"
+mkdir -p "$base_path"
 
-mkdir -p "$BLEND_PROJECT_NAME/textures/raw/png"
-mkdir -p "$BLEND_PROJECT_NAME/textures/raw/jpg"
-mkdir -p "$BLEND_PROJECT_NAME/textures/raw/tiff"
-mkdir -p "$BLEND_PROJECT_NAME/textures/raw/bmp"
-mkdir -p "$BLEND_PROJECT_NAME/textures/raw/hdr"
+# Director pentru fișiere principale ale proiectului
+mkdir -p "$base_path/scenes"
+mkdir -p "$base_path/scripts"
+mkdir -p "$base_path/levels"
+mkdir -p "$base_path/meshes"
 
-mkdir -p "$BLEND_PROJECT_NAME/textures/processed/png"
-mkdir -p "$BLEND_PROJECT_NAME/textures/processed/jpg"
-mkdir -p "$BLEND_PROJECT_NAME/textures/processed/tiff"
+# Director pentru texturi
+mkdir -p "$base_path/textures/png"
+mkdir -p "$base_path/textures/jpg"
+mkdir -p "$base_path/textures/jpeg"
+mkdir -p "$base_path/textures/tga"
 
-mkdir -p "$BLEND_PROJECT_NAME/textures/atlases/png"
-mkdir -p "$BLEND_PROJECT_NAME/textures/atlases/jpg"
+# Director pentru sunete și muzică
+mkdir -p "$base_path/audio/sfx"
+mkdir -p "$base_path/audio/music"
 
-mkdir -p "$BLEND_PROJECT_NAME/scenes/test/blend"
-mkdir -p "$BLEND_PROJECT_NAME/scenes/test/fbx"
-mkdir -p "$BLEND_PROJECT_NAME/scenes/test/obj"
+# Director pentru resurse externe
+mkdir -p "$base_path/resources/shaders"
+mkdir -p "$base_path/resources/fonts"
+mkdir -p "$base_path/resources/particles"
 
-mkdir -p "$BLEND_PROJECT_NAME/scenes/final/blend"
-mkdir -p "$BLEND_PROJECT_NAME/scenes/final/fbx"
-mkdir -p "$BLEND_PROJECT_NAME/scenes/final/obj"
+# Director pentru exporturi
+mkdir -p "$base_path/exports/windows"
+mkdir -p "$base_path/exports/linux"
+mkdir -p "$base_path/exports/web"
 
-mkdir -p "$BLEND_PROJECT_NAME/renders/tests/png"
-mkdir -p "$BLEND_PROJECT_NAME/renders/tests/jpg"
-mkdir -p "$BLEND_PROJECT_NAME/renders/tests/exr"
+# Director pentru referințe
+mkdir -p "$base_path/references"
 
-mkdir -p "$BLEND_PROJECT_NAME/renders/final/png"
-mkdir -p "$BLEND_PROJECT_NAME/renders/final/jpg"
-mkdir -p "$BLEND_PROJECT_NAME/renders/final/exr"
+# Director temporar pentru cache sau fișiere intermediare
+mkdir -p "$base_path/temp"
 
-mkdir -p "$BLEND_PROJECT_NAME/animations/actions/blend"
-mkdir -p "$BLEND_PROJECT_NAME/animations/actions/bvh"
-mkdir -p "$BLEND_PROJECT_NAME/animations/actions/abc"
-
-mkdir -p "$BLEND_PROJECT_NAME/animations/clips/blend"
-mkdir -p "$BLEND_PROJECT_NAME/animations/clips/bvh"
-mkdir -p "$BLEND_PROJECT_NAME/animations/clips/abc"
-
-mkdir -p "$BLEND_PROJECT_NAME/references/images/jpg"
-mkdir -p "$BLEND_PROJECT_NAME/references/images/png"
-
-mkdir -p "$BLEND_PROJECT_NAME/references/videos/mp4"
-mkdir -p "$BLEND_PROJECT_NAME/references/videos/avi"
-mkdir -p "$BLEND_PROJECT_NAME/references/videos/mov"
-
-mkdir -p "$BLEND_PROJECT_NAME/references/3d/obj"
-mkdir -p "$BLEND_PROJECT_NAME/references/3d/fbx"
-mkdir -p "$BLEND_PROJECT_NAME/references/3d/blend"
-
-mkdir -p "$BLEND_PROJECT_NAME/docs/md"
-mkdir -p "$BLEND_PROJECT_NAME/docs/txt"
-mkdir -p "$BLEND_PROJECT_NAME/docs/pdf"
-
-echo "Structura de directoare a fost creată cu succes!"
-
-#Blender
-#models/raw: .blend, .obj, .fbx, .stl
-#models/optimized: .blend, .obj, .fbx, .stl
-#models/parts: .obj, .fbx, .stl
-#textures/raw: .png, .jpg, .tiff, .bmp, .hdr
-#textures/processed: .png, .jpg, .tiff
-#textures/atlases: .png, .jpg
-#materials: .blend, .mtl, .json
-#scenes/test, final: .blend, .fbx, .obj
-#renders/tests, final: .png, .jpg, .exr
-#animations/actions, clips: .blend, .bvh, .abc
-#references/images: .jpg, .png
-#references/videos: .mp4, .avi, .mov
-#references/3d: .obj, .fbx, .blend
-#addons: .py, .json
-#cache/smoke, cloth, fluid: .vdb, .cache
-#docs: .md, .txt, .pdf
+# Afișare mesaj final
+echo "Structura de directoare pentru proiectul Godot a fost creată în: $base_path."
