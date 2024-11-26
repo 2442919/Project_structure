@@ -1,48 +1,38 @@
 #!/bin/bash
 
+# Solicitarea numelui proiectului de la utilizator
+read -p "Introduceți numele proiectului GIMP: " project_name
 
-echo "Introduceți numele proiectului pentru GIMP:"
-read GIMP_PROJECT_NAME
+# Dacă utilizatorul nu introduce nimic, se folosește un nume implicit
+if [ -z "$project_name" ]; then
+    project_name="Proiect_GIMP"
+fi
 
-# Creare directoare GIMP
-mkdir -p "$GIMP_PROJECT_NAME/sources/raw/jpg"
-mkdir -p "$GIMP_PROJECT_NAME/sources/raw/png"
-mkdir -p "$GIMP_PROJECT_NAME/sources/raw/tiff"
-mkdir -p "$GIMP_PROJECT_NAME/sources/raw/psd"
-mkdir -p "$GIMP_PROJECT_NAME/sources/raw/xcf"
+# Crearea directorului de bază pentru proiect
+base_path="$project_name"
+mkdir -p "$base_path"
 
-mkdir -p "$GIMP_PROJECT_NAME/sources/edited/xcf"
-mkdir -p "$GIMP_PROJECT_NAME/sources/edited/psd"
+# Director pentru fișiere GIMP (.xcf)
+mkdir -p "$base_path/xcf"
 
-mkdir -p "$GIMP_PROJECT_NAME/exports/png/png"
-mkdir -p "$GIMP_PROJECT_NAME/exports/jpg/jpg"
-mkdir -p "$GIMP_PROJECT_NAME/exports/web/png"
-mkdir -p "$GIMP_PROJECT_NAME/exports/web/jpg"
-mkdir -p "$GIMP_PROJECT_NAME/exports/web/webp"
+# Director pentru fișiere de export
+# Conține subfoldere pentru formatele de imagine comune
+mkdir -p "$base_path/exports/png"
+mkdir -p "$base_path/exports/jpg"
+mkdir -p "$base_path/exports/webp"
 
-mkdir -p "$GIMP_PROJECT_NAME/brushes/gbr"
-mkdir -p "$GIMP_PROJECT_NAME/brushes/vbr"
-mkdir -p "$GIMP_PROJECT_NAME/brushes/abr"
+# Director pentru fișiere resurse (pensule, texturi, pattern-uri, fonturi)
+mkdir -p "$base_path/resources/brushes"
+mkdir -p "$base_path/resources/textures"
+mkdir -p "$base_path/resources/patterns"
+mkdir -p "$base_path/resources/fonts"
 
-mkdir -p "$GIMP_PROJECT_NAME/patterns/pat"
-mkdir -p "$GIMP_PROJECT_NAME/patterns/png"
+# Director pentru fișiere de referință
+# Aici se stochează imaginile sau documentele utilizate ca inspirație
+mkdir -p "$base_path/references"
 
-mkdir -p "$GIMP_PROJECT_NAME/fonts/ttf"
-mkdir -p "$GIMP_PROJECT_NAME/fonts/otf"
+# Director pentru fișiere temporare
+mkdir -p "$base_path/temp"
 
-mkdir -p "$GIMP_PROJECT_NAME/docs/md"
-mkdir -p "$GIMP_PROJECT_NAME/docs/txt"
-mkdir -p "$GIMP_PROJECT_NAME/docs/pdf"
-
-echo " Fisierele au fost create cu succes "
-
-#GIMP
-#sources/raw: .jpg, .png, .tiff, .psd, .xcf
-#sources/edited: .xcf, .psd
-#exports/png: .png
-#exports/jpg: .jpg
-#exports/web: .png, .jpg, .webp
-#brushes: .gbr, .vbr, .abr
-#patterns: .pat, .png
-#fonts: .ttf, .otf
-#docs: .md, .txt, .pdf
+# Afișare mesaj final
+echo "Structura de directoare a fost creată pentru proiectul: $base_path."
